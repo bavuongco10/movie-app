@@ -7,10 +7,8 @@ import { actions } from 'react-native-navigation-redux-helpers';
 
 import { closeDrawer } from './actions/drawer';
 
-import Login from './components/login/';
 import Home from './components/home/';
 import BlankPage from './components/blankPage';
-import SplashPage from './components/splashscreen/';
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
 
@@ -23,7 +21,6 @@ const {
 } = NavigationExperimental;
 
 class AppNavigator extends Component {
-
   static propTypes = {
     drawerState: React.PropTypes.string,
     popRoute: React.PropTypes.func,
@@ -38,11 +35,11 @@ class AppNavigator extends Component {
     BackAndroid.addEventListener('hardwareBackPress', () => {
       const routes = this.props.navigation.routes;
 
-      if (routes[routes.length - 1].key === 'home' || routes[routes.length - 1].key === 'login') {
+      if (routes[routes.length - 1].key === 'home') {
         return false;
       }
 
-      this.props.popRoute(this.props.navigation.key);
+      this.popRoute(this.props.navigation.key);
       return true;
     });
   }
@@ -57,8 +54,8 @@ class AppNavigator extends Component {
     }
   }
 
-  popRoute() {
-    this.props.popRoute();
+  popRoute(key) {
+    this.props.popRoute(key);
   }
 
   openDrawer() {
@@ -71,18 +68,14 @@ class AppNavigator extends Component {
     }
   }
 
-  _renderScene(props) { // eslint-disable-line class-methods-use-this
+  _renderScene(props) {
     switch (props.scene.route.key) {
-      case 'splashscreen':
-        return <SplashPage />;
-      case 'login':
-        return <Login />;
       case 'home':
         return <Home />;
       case 'blankPage':
         return <BlankPage />;
       default :
-        return <Login />;
+        return <Home />;
     }
   }
 
@@ -94,7 +87,7 @@ class AppNavigator extends Component {
         tweenDuration={150}
         content={<SideBar />}
         tapToClose
-        acceptPan={false}
+        acceptPan={true}
         onClose={() => this.closeDrawer()}
         openDrawerOffset={0.2}
         panCloseMask={0.2}

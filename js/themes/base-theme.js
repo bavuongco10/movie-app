@@ -193,10 +193,9 @@ export default {
 
 
   // Tabs
-  tabBgColor: '#F8F8F8',
+  tabBgColor: (Platform.OS === 'ios') ? '#F8F8F8' : '#4179F7',
   tabFontSize: 15,
-  tabTextColor: '#fff',
-
+  tabTextColor: (Platform.OS === 'ios') ? '#007aff' : '#fff',
 
   // Text
   textColor: '#000',

@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class App extends Component {
+export default class App extends Component {
 
   constructor(props) {
     super(props);
@@ -38,26 +38,26 @@ class App extends Component {
   }
 
   componentDidMount() {
-    CodePush.sync({ updateDialog: true, installMode: CodePush.InstallMode.IMMEDIATE },
+    CodePush.sync({updateDialog: true, installMode: CodePush.InstallMode.IMMEDIATE},
       (status) => {
         switch (status) {
           case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
-            this.setState({ showDownloadingModal: true });
+            this.setState({showDownloadingModal: true});
             this._modal.open();
             break;
           case CodePush.SyncStatus.INSTALLING_UPDATE:
-            this.setState({ showInstalling: true });
+            this.setState({showInstalling: true});
             break;
           case CodePush.SyncStatus.UPDATE_INSTALLED:
             this._modal.close();
-            this.setState({ showDownloadingModal: false });
+            this.setState({showDownloadingModal: false});
             break;
           default:
             break;
         }
       },
-      ({ receivedBytes, totalBytes }) => {
-        this.setState({ downloadProgress: (receivedBytes / totalBytes) * 100 });
+      ({receivedBytes, totalBytes}) => {
+        this.setState({downloadProgress: (receivedBytes / totalBytes) * 100});
       }
     );
   }
@@ -117,9 +117,6 @@ class App extends Component {
         </Container>
       );
     }
-
     return <AppNavigator />;
   }
 }
-
-export default App;
