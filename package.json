@@ -69,7 +69,6 @@
     "native-base boilerplate",
     "react-native with native-base"
   ],
-  "upstreamRepo": "git@github.com:GeekyAnts/react-native-native-base-seed.git",
   "jest": {
     "preset": "jest-react-native"
   }
