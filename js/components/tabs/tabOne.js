@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import SwiperNumber from '../swiperNumber';
+import ImageSwiper from '../imageSwiper';
 
 export default () => (
-  <SwiperNumber/>
+  <ImageSwiper/>
 );
 
