@@ -64,7 +64,6 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
   navigation: state.cardNavigation,
-  name: state.user.name,
   index: state.list.selectedIndex,
   list: state.list.list,
 });

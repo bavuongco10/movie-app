@@ -15,8 +15,8 @@ const enhancer = compose(
   }),
 );
 
-export default (onCompletion:()=> void ) => {
-  const store = createStore(reducer, enhancer);
+export default (onCompletion:()=> void, initialState) => {
+  const store = createStore(reducer, initialState, enhancer);
   persistStore(store, { storage: AsyncStorage }, onCompletion);
   return store;
 }

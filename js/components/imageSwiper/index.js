@@ -10,6 +10,10 @@ const loading = require('./img/loading3.gif')
 import axios from 'axios';
 import path from 'path';
 import styles from './styles';
+import { connect } from 'react-redux';
+import { fetchNowPlaying } from '../../actions/imageSwiper';
+
+
 
 // const Slide = ({loadHandle, loaded, uri, i}) => (
 //   <View style={styles.slide}>
@@ -117,24 +121,9 @@ const Slide = ({loadHandle, loaded, uri, i}) => (
 );
 
 
-export default class extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      imgList: [],
-    }
-  }
-
-  fetchMovies() {
-    const movieUri = 'https://api.themoviedb.org/3/movie/now_playing?api_key=903aec734823b64427c405dec09fe3ee';
-    axios.get(movieUri)
-      .then(res => res.data.results
-        .map(item => path.join('https://image.tmdb.org/t/p/w780/', item.poster_path)))
-      .then(items => this.setState({'imgList': items}));
-  }
-
+class ImageSwiper extends Component {
   componentDidMount() {
-    this.fetchMovies();
+    this.props.fetchNowPlaying();
   }
 
   render() {
@@ -142,7 +131,7 @@ export default class extends Component {
       <View>
         <Swiper loadMinimal loadMinimalSize={1} style={styles.wrapper} loop={false}>
           {
-            this.state.imgList.map((item, i) =>
+            this.props.items.map((item, i) =>
               <Slide
                 uri={item}
                 i={i}
@@ -155,3 +144,15 @@ export default class extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  items: state.items,
+  hasErrored: state.itemsHasErrored,
+  isLoading: state.itemsIsLoading
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchNowPlaying: url => dispatch(fetchNowPlaying())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImageSwiper);
