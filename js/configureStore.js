@@ -6,10 +6,11 @@ import thunk from 'redux-thunk';
 import { persistStore } from 'redux-persist';
 import reducer from './reducers';
 import promise from './promise';
+import createLogger from 'redux-logger';
 
-
+const logger = createLogger();
 const enhancer = compose(
-  applyMiddleware(thunk, promise),
+  applyMiddleware(thunk, promise, logger),
   devTools({
     name: 'nativestarterkit', realtime: true,
   }),

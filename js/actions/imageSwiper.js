@@ -1,24 +1,28 @@
 import path from 'path';
 import axios from 'axios';
 import type { Action } from './types';
-
+import _ from 'lodash';
 export const FETCH_NOW_PLAYING_SUCCESS = 'FETCH_NOW_PLAYING_SUCCESS';
 
 export const ITEMS_HAS_ERRORED = 'ITEMS_HAS_ERRORED';
 
 export const ITEMS_IS_LOADING = 'ITEMS_IS_LOADING';
 
-export function itemsHasErrored(bool): Action {
+export const ON_SWIPER_SCROLL_END_SUCCESS = 'ON_SWIPER_SCROLL_END_SUCCESS';
+
+export const SWIPER_IMAGE_INDEX = 'SWIPER_IMAGE_INDEX';
+
+export function itemsHasErrored(hasErrored): Action {
   return {
     type: ITEMS_HAS_ERRORED,
-    hasErrored: bool
+    hasErrored
   };
 }
 
-export function itemsIsLoading(bool): Action {
+export function itemsIsLoading(isLoading): Action {
   return {
     type: ITEMS_IS_LOADING,
-    isLoading: bool
+    isLoading
   };
 }
 
@@ -47,9 +51,31 @@ export function fetchNowPlaying() {
       const res = await axios.get(uri);
       if (!res.data) throw new Error();
       const items = res.data.results.map(item => path.join('https://image.tmdb.org/t/p/w780/', item.poster_path));
-      dispatch(fetchNowPlayingSuccess(items));
+      const slicedItems = _.slice(items,0, 7);
+      dispatch(fetchNowPlayingSuccess(slicedItems));
     } catch (err) {
       dispatch(itemsHasErrored(true));
     }
   }
 };
+
+export function swiperImageIndex(swiperIndex) {
+  return {
+    type: SWIPER_IMAGE_INDEX,
+    swiperIndex
+  };
+}
+
+export function onSwiperScrollEndSuccess(swiperState) {
+  return {
+    type: ON_SWIPER_SCROLL_END_SUCCESS,
+    swiperState
+  }
+}
+
+export function onSwiperScrollEnd(state) {
+  return( dispatch => {
+    dispatch(swiperImageIndex(state.index));
+    dispatch(onSwiperScrollEndSuccess(state));
+  });
+}

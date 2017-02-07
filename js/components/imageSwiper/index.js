@@ -7,11 +7,9 @@ import {
 } from 'react-native'
 import Swiper from 'react-native-swiper'
 const loading = require('./img/loading3.gif')
-import axios from 'axios';
-import path from 'path';
 import styles from './styles';
 import { connect } from 'react-redux';
-import { fetchNowPlaying } from '../../actions/imageSwiper';
+import { fetchNowPlaying, onSwiperScrollEnd } from '../../actions/imageSwiper';
 
 
 
@@ -129,7 +127,14 @@ class ImageSwiper extends Component {
   render() {
     return (
       <View>
-        <Swiper loadMinimal loadMinimalSize={1} style={styles.wrapper} loop={false}>
+        <Swiper
+          loadMinimal
+          loadMinimalSize={1}
+          style={styles.wrapper}
+          loop={false} height={570}
+          showsPagination={false}
+          onMomentumScrollEnd = {this.props.onSwiperScrollEnd}
+        >
           {
             this.props.items.map((item, i) =>
               <Slide
@@ -148,11 +153,12 @@ class ImageSwiper extends Component {
 const mapStateToProps = state => ({
   items: state.items,
   hasErrored: state.itemsHasErrored,
-  isLoading: state.itemsIsLoading
+  isLoading: state.itemsIsLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchNowPlaying: url => dispatch(fetchNowPlaying())
+  fetchNowPlaying: url => dispatch(fetchNowPlaying()),
+  onSwiperScrollEnd: (e, state, context) => dispatch(onSwiperScrollEnd(state)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageSwiper);
