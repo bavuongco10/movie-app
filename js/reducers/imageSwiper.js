@@ -33,10 +33,10 @@ export function items(state = [], action) {
   }
 }
 
-export function currentSwiperItem(state = {}, action) {
+export function currentSwiperIndex(state = 0, action) {
   switch (action.type) {
     case SWIPER_IMAGE_INDEX:
-      return action.currentSwiperItem;
+      return action.currentSwiperIndex;
     default:
       return state;
   }

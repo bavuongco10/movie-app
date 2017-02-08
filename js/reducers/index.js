@@ -8,7 +8,7 @@ import {
   items,
   itemsHasErrored,
   itemsIsLoading,
-  currentSwiperItem,
+  currentSwiperIndex,
   swiperScrollEnd
 } from './imageSwiper';
 export default combineReducers({
@@ -18,6 +18,6 @@ export default combineReducers({
   items,
   itemsHasErrored,
   itemsIsLoading,
-  currentSwiperItem,
+  currentSwiperIndex,
   swiperScrollEnd,
 });

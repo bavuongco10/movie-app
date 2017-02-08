@@ -59,10 +59,10 @@ export function fetchNowPlaying() {
   }
 };
 
-export function currentSwiperItem(currentSwiperItem) {
+export function currentSwiperIndex(currentSwiperIndex) {
   return {
     type: SWIPER_IMAGE_INDEX,
-    currentSwiperItem
+    currentSwiperIndex
   };
 }
 
@@ -75,7 +75,7 @@ export function onSwiperScrollEndSuccess(swiperState) {
 
 export function onSwiperScrollEnd(state) {
   return( dispatch => {
-    dispatch(currentSwiperItem(state));
+    dispatch(currentSwiperIndex(state.index));
     dispatch(onSwiperScrollEndSuccess(state));
   });
 }

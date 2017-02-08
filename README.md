@@ -1,7 +1,6 @@
-Now playing:
+Recompose with redux : http://www.hartzis.me/react-recompose-redux/
 
-https://api.themoviedb.org/3/movie/now_playing?api_key=903aec734823b64427c405dec09fe3ee
+Now playing: https://api.themoviedb.org/3/movie/now_playing?api_key=903aec734823b64427c405dec09fe3ee
 
-Image:
+Image: https://image.tmdb.org/t/p/w780/hLudzvGfpi6JlwUnsNhXwKKg4j.jpg
 
-https://image.tmdb.org/t/p/w780/hLudzvGfpi6JlwUnsNhXwKKg4j.jpg
