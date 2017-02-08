@@ -50,8 +50,8 @@ export function fetchNowPlaying() {
       dispatch(itemsIsLoading(true));
       const res = await axios.get(uri);
       if (!res.data) throw new Error();
-      const items = res.data.results.map(item => path.join('https://image.tmdb.org/t/p/w780/', item.poster_path));
-      const slicedItems = _.slice(items,0, 7);
+      const items = res.data.results;
+      const slicedItems = _.slice(items,3, 6);
       dispatch(fetchNowPlayingSuccess(slicedItems));
     } catch (err) {
       dispatch(itemsHasErrored(true));
@@ -59,10 +59,10 @@ export function fetchNowPlaying() {
   }
 };
 
-export function swiperImageIndex(swiperIndex) {
+export function currentSwiperItem(currentSwiperItem) {
   return {
     type: SWIPER_IMAGE_INDEX,
-    swiperIndex
+    currentSwiperItem
   };
 }
 
@@ -75,7 +75,7 @@ export function onSwiperScrollEndSuccess(swiperState) {
 
 export function onSwiperScrollEnd(state) {
   return( dispatch => {
-    dispatch(swiperImageIndex(state.index));
+    dispatch(currentSwiperItem(state));
     dispatch(onSwiperScrollEndSuccess(state));
   });
 }
