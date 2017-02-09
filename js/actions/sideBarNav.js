@@ -8,13 +8,11 @@ const {
   pushRoute,
 } = actions;
 
-export default function navigateTo(route, homeRoute) {
+export default function navigateTo(route, homeRoute = 'home') {
   return (dispatch, getState) => {
     const navigation = getState().cardNavigation;
     const currentRouteKey = navigation.routes[navigation.routes.length - 1].key;
-
     dispatch(closeDrawer());
-
     if (currentRouteKey !== homeRoute && route !== homeRoute) {
       dispatch(replaceAt(currentRouteKey, { key: route, index: 1 }, navigation.key));
     } else if (currentRouteKey !== homeRoute && route === homeRoute) {

@@ -13,6 +13,7 @@ import compose from 'recompose/compose';
 import lifecycle from 'recompose/lifecycle';
 import path from 'path';
 import { fetchNowPlaying, onSwiperScrollEnd } from '../../actions/imageSwiper';
+import Button from 'react-native-button';
 
 const getImageUri = (pathname) => path.join('https://image.tmdb.org/t/p/w780/', pathname);
 
@@ -28,7 +29,7 @@ const Slide = ({loadHandle, loaded, uri, i}) => (
   </View>
 );
 
-const ImageSwiper = ({onSwiperScrollEnd, items}) => (
+const ImageSwiper = ({onSwiperScrollEnd, items, currentSwiperIndex}) => (
   <View>
     <Swiper
       loadMinimal
@@ -48,6 +49,17 @@ const ImageSwiper = ({onSwiperScrollEnd, items}) => (
         )
       }
     </Swiper>
+    <Button
+      containerStyle={{
+        height: 50,
+        width: 50,
+        top: 470,
+        left: 20,
+        position: 'absolute',
+      }}
+    >
+      { items.length !== 0 ? items[currentSwiperIndex].vote_average : null}
+    </Button>
   </View>
 );
 
@@ -56,6 +68,7 @@ const mapStateToProps = state => ({
   items: state.items,
   hasErrored: state.itemsHasErrored,
   isLoading: state.itemsIsLoading,
+  currentSwiperIndex: state.currentSwiperIndex,
 });
 
 const mapDispatchToProps = dispatch => ({

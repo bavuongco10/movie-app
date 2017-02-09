@@ -22,10 +22,10 @@ const SideBar = ({navigateTo}) => (
     </Image>
 
     <List>
-      <ListItem button onPress={() => navigateTo('home', 'home')} >
+      <ListItem button onPress={() => navigateTo('home')} >
         <Text>Home</Text>
       </ListItem>
-      <ListItem button onPress={() => navigateTo('blankPage', 'home')} >
+      <ListItem button onPress={() => navigateTo('blankPage')} >
         <Text>Blank Page</Text>
       </ListItem>
     </List>
