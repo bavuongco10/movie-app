@@ -7,6 +7,7 @@ import {
   FETCH_NOW_PLAYING_SUCCESS,
   SWIPER_IMAGE_INDEX,
   ON_SWIPER_SCROLL_END_SUCCESS,
+  SET_CURRENT_ITEM_ID_SUCCESS,
 } from '../constants/actionType';
 
 export function itemsHasErrored(hasErrored): Action {
@@ -75,4 +76,16 @@ export function onSwiperScrollEnd(state) {
     dispatch(currentSwiperIndex(state.index));
     dispatch(onSwiperScrollEndSuccess(state));
   });
+}
+
+
+export function setcurrentItemIdSuccess(itemId) {
+  return {
+    type: SET_CURRENT_ITEM_ID_SUCCESS,
+    itemId,
+  }
+}
+
+export function setCurrentItemId(id) {
+  return (dispatch => dispatch(setcurrentItemIdSuccess(id)))
 }

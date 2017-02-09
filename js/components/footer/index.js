@@ -3,6 +3,7 @@ import Button from 'react-native-button';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import navigateTo from '../../actions/sideBarNav';
+import { setCurrentItemId } from '../../actions/imageSwiper';
 import {
   DETAIL,
 } from '../../constants/route';
@@ -13,7 +14,7 @@ const getAttribute = (currentSwiperIndex, items, key) => {
   return currentItem ? currentItem[key] : null;
 };
 
-const MyFooter = ({currentSwiperIndex, items, navigateTo}) => (
+const MyFooter = ({currentSwiperIndex, items, navigateTo, setCurrentItemId}) => (
   <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
     <Text style={{ flex: 0.8}}>{getAttribute(currentSwiperIndex, items, 'original_title')}
     </Text>
@@ -22,8 +23,8 @@ const MyFooter = ({currentSwiperIndex, items, navigateTo}) => (
       style={{fontSize: 15, color: 'white', }}
       onPress = {() => {
         navigateTo(DETAIL)
-        console.log(getAttribute(currentSwiperIndex, items, 'id'))}
-      }
+        setCurrentItemId(getAttribute(currentSwiperIndex, items, 'id'))
+      }}
     >
       Press me!
     </Button>
@@ -37,6 +38,7 @@ const mapStateTopProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   navigateTo: (route, homeRoute) => dispatch(navigateTo(route, homeRoute)),
+  setCurrentItemId: id => dispatch(setCurrentItemId(id)),
 })
 
 export default connect(mapStateTopProps, mapDispatchToProps)(MyFooter);

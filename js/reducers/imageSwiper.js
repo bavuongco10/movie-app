@@ -4,6 +4,7 @@ import {
   FETCH_NOW_PLAYING_SUCCESS,
   ON_SWIPER_SCROLL_END_SUCCESS,
   SWIPER_IMAGE_INDEX,
+  SET_CURRENT_ITEM_ID_SUCCESS,
 } from '../constants/actionType';
 
 export function itemsHasErrored(state = false, action) {
@@ -50,4 +51,13 @@ export function swiperScrollEnd(state = {}, action) {
       return state;
   }
 
+}
+
+export function currentItemId(state = 0, action) {
+  switch (action.type) {
+    case SET_CURRENT_ITEM_ID_SUCCESS:
+      return action.itemId;
+    default:
+      return state;
+  }
 }

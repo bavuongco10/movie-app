@@ -11,7 +11,7 @@ const {
   popRoute,
 } = actions;
 
-const Detail = ({popRoute, navigation, openDrawer}) => (
+const Detail = ({popRoute, navigation, openDrawer, currentItemId}) => (
   <Container style={styles.container}>
     <Header>
       <Button transparent onPress={() => popRoute(navigation.key)}>
@@ -27,7 +27,7 @@ const Detail = ({popRoute, navigation, openDrawer}) => (
 
     <Content padder>
       <Text>
-        {'Create Something Awesome . . .'}
+        {'Create Something Awesome . . .' + currentItemId }
       </Text>
     </Content>
   </Container>
@@ -40,6 +40,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   navigation: state.cardNavigation,
+  currentItemId: state.currentItemId,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Detail);

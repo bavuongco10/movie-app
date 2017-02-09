@@ -7,7 +7,8 @@ import {
   itemsHasErrored,
   itemsIsLoading,
   currentSwiperIndex,
-  swiperScrollEnd
+  swiperScrollEnd,
+  currentItemId
 } from './imageSwiper';
 export default combineReducers({
   drawer,
@@ -17,4 +18,5 @@ export default combineReducers({
   itemsIsLoading,
   currentSwiperIndex,
   swiperScrollEnd,
+  currentItemId
 });
