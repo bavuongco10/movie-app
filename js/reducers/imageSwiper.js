@@ -4,7 +4,7 @@ import {
   FETCH_NOW_PLAYING_SUCCESS,
   ON_SWIPER_SCROLL_END_SUCCESS,
   SWIPER_IMAGE_INDEX,
-} from '../actions/imageSwiper';
+} from '../constants/actionType';
 
 export function itemsHasErrored(state = false, action) {
   switch (action.type) {

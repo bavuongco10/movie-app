@@ -1,14 +1,15 @@
-
 import { actions } from 'react-native-navigation-redux-helpers';
 import { closeDrawer } from './drawer';
-
+import {
+  HOME,
+} from '../constants/route';
 const {
   replaceAt,
   popRoute,
   pushRoute,
 } = actions;
 
-export default function navigateTo(route, homeRoute = 'home') {
+export default function navigateTo(route, homeRoute = HOME) {
   return (dispatch, getState) => {
     const navigation = getState().cardNavigation;
     const currentRouteKey = navigation.routes[navigation.routes.length - 1].key;

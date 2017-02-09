@@ -1,15 +1,16 @@
-
 import { cardStackReducer } from 'react-native-navigation-redux-helpers';
-
+import {
+  HOME,
+} from '../constants/route';
 const initialState = {
   key: 'global',
   index: 0,
   routes: [
     {
-      key: 'home',
+      key: HOME,
       index: 0,
     },
   ],
 };
 
-module.exports = cardStackReducer(initialState);
+export default cardStackReducer(initialState);

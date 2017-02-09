@@ -9,9 +9,14 @@ import { closeDrawer } from './actions/drawer';
 
 import Home from './components/home/';
 import BlankPage from './components/blankPage';
+import Detail from './components/detail';
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
-
+import {
+  HOME,
+  BLANK_PAGE,
+  DETAIL,
+} from './constants/route';
 const {
   popRoute,
 } = actions;
@@ -21,16 +26,6 @@ const {
 } = NavigationExperimental;
 
 class AppNavigator extends Component {
-  static propTypes = {
-    drawerState: React.PropTypes.string,
-    popRoute: React.PropTypes.func,
-    closeDrawer: React.PropTypes.func,
-    navigation: React.PropTypes.shape({
-      key: React.PropTypes.string,
-      routes: React.PropTypes.array,
-    }),
-  }
-
   componentDidMount() {
     BackAndroid.addEventListener('hardwareBackPress', () => {
       const routes = this.props.navigation.routes;
@@ -70,10 +65,12 @@ class AppNavigator extends Component {
 
   _renderScene(props) {
     switch (props.scene.route.key) {
-      case 'home':
+      case HOME:
         return <Home />;
-      case 'blankPage':
+      case BLANK_PAGE:
         return <BlankPage />;
+      case DETAIL:
+        return <Detail />
       default :
         return <Home />;
     }
@@ -98,7 +95,7 @@ class AppNavigator extends Component {
             shadowRadius: 3,
           },
         }}
-        tweenHandler={(ratio) => {  //eslint-disable-line
+        tweenHandler={(ratio) => {
           return {
             drawer: { shadowRadius: ratio < 0.2 ? ratio * 5 * 5 : 5 },
             main: {
@@ -122,7 +119,7 @@ class AppNavigator extends Component {
   }
 }
 
-function bindAction(dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     closeDrawer: () => dispatch(closeDrawer()),
     popRoute: key => dispatch(popRoute(key)),
@@ -134,4 +131,4 @@ const mapStateToProps = state => ({
   navigation: state.cardNavigation,
 });
 
-export default connect(mapStateToProps, bindAction)(AppNavigator);
+export default connect(mapStateToProps, mapDispatchToProps)(AppNavigator);

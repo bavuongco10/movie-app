@@ -3,7 +3,9 @@ import Button from 'react-native-button';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import navigateTo from '../../actions/sideBarNav';
-
+import {
+  DETAIL,
+} from '../../constants/route';
 const getCurrentItem = (currentSwiperIndex, items) => items[currentSwiperIndex];
 
 const getAttribute = (currentSwiperIndex, items, key) => {
@@ -19,7 +21,7 @@ const MyFooter = ({currentSwiperIndex, items, navigateTo}) => (
       containerStyle={{flex: 0.2, height: 50, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center'}}
       style={{fontSize: 15, color: 'white', }}
       onPress = {() => {
-        navigateTo('blankPage')
+        navigateTo(DETAIL)
         console.log(getAttribute(currentSwiperIndex, items, 'id'))}
       }
     >

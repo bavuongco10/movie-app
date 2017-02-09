@@ -51,11 +51,10 @@ const ImageSwiper = ({onSwiperScrollEnd, items, currentSwiperIndex}) => (
     </Swiper>
     <Button
       containerStyle={{
-        height: 50,
-        width: 50,
-        top: 470,
-        left: 20,
+        top: 500,
+        left: 50,
         position: 'absolute',
+        borderRadius: 4,
       }}
     >
       { items.length !== 0 ? items[currentSwiperIndex].vote_average : null}

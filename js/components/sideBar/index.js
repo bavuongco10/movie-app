@@ -8,6 +8,11 @@ import myTheme from '../../themes/base-theme';
 
 import styles from './style';
 
+import {
+  HOME,
+  BLANK_PAGE,
+} from '../../constants/route';
+
 const drawerCover = require('../../../images/drawer-cover.png');
 const drawerImage = require('../../../images/logo-kitchen-sink.png');
 
@@ -22,10 +27,10 @@ const SideBar = ({navigateTo}) => (
     </Image>
 
     <List>
-      <ListItem button onPress={() => navigateTo('home')} >
+      <ListItem button onPress={() => navigateTo(HOME)} >
         <Text>Home</Text>
       </ListItem>
-      <ListItem button onPress={() => navigateTo('blankPage')} >
+      <ListItem button onPress={() => navigateTo(BLANK_PAGE)} >
         <Text>Blank Page</Text>
       </ListItem>
     </List>

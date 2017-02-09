@@ -12,18 +12,6 @@ const {
 } = actions;
 
 class BlankPage extends Component {
-
-  static propTypes = {
-    name: React.PropTypes.string,
-    index: React.PropTypes.number,
-    list: React.PropTypes.arrayOf(React.PropTypes.string),
-    openDrawer: React.PropTypes.func,
-    popRoute: React.PropTypes.func,
-    navigation: React.PropTypes.shape({
-      key: React.PropTypes.string,
-    }),
-  }
-
   popRoute() {
     this.props.popRoute(this.props.navigation.key);
   }
@@ -38,7 +26,7 @@ class BlankPage extends Component {
             <Icon name="ios-arrow-back" />
           </Button>
 
-          <Title>{(name) ? this.props.name : 'Blank Page'}</Title>
+          <Title>{'Blank Page'}</Title>
 
           <Button transparent onPress={this.props.openDrawer}>
             <Icon name="ios-menu" />
@@ -64,8 +52,6 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
   navigation: state.cardNavigation,
-  index: state.list.selectedIndex,
-  list: state.list.list,
 });
 
 

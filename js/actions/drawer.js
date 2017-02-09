@@ -1,9 +1,5 @@
-
 import type { Action } from './types';
-
-export const OPEN_DRAWER = 'OPEN_DRAWER';
-export const CLOSE_DRAWER = 'CLOSE_DRAWER';
-
+import { OPEN_DRAWER, CLOSE_DRAWER } from '../constants/actionType';
 export function openDrawer():Action {
   return {
     type: OPEN_DRAWER,

@@ -1,16 +1,13 @@
-import path from 'path';
 import axios from 'axios';
 import type { Action } from './types';
 import _ from 'lodash';
-export const FETCH_NOW_PLAYING_SUCCESS = 'FETCH_NOW_PLAYING_SUCCESS';
-
-export const ITEMS_HAS_ERRORED = 'ITEMS_HAS_ERRORED';
-
-export const ITEMS_IS_LOADING = 'ITEMS_IS_LOADING';
-
-export const ON_SWIPER_SCROLL_END_SUCCESS = 'ON_SWIPER_SCROLL_END_SUCCESS';
-
-export const SWIPER_IMAGE_INDEX = 'SWIPER_IMAGE_INDEX';
+import {
+  ITEMS_HAS_ERRORED,
+  ITEMS_IS_LOADING,
+  FETCH_NOW_PLAYING_SUCCESS,
+  SWIPER_IMAGE_INDEX,
+  ON_SWIPER_SCROLL_END_SUCCESS,
+} from '../constants/actionType';
 
 export function itemsHasErrored(hasErrored): Action {
   return {
