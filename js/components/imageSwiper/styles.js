@@ -32,5 +32,12 @@ export default StyleSheet.create ({
   loadingImage: {
     width: 60,
     height: 60
+  },
+
+  scoreButton: {
+    top: 500,
+    left: 30,
+    position: 'absolute',
+    borderRadius: 4,
   }
 });

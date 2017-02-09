@@ -13,7 +13,7 @@ import compose from 'recompose/compose';
 import lifecycle from 'recompose/lifecycle';
 import path from 'path';
 import { fetchNowPlaying, onSwiperScrollEnd } from '../../actions/imageSwiper';
-import Button from 'react-native-button';
+import { Button } from 'native-base';
 
 const getImageUri = (pathname) => path.join('https://image.tmdb.org/t/p/w780/', pathname);
 
@@ -49,15 +49,10 @@ const ImageSwiper = ({onSwiperScrollEnd, items, currentSwiperIndex}) => (
         )
       }
     </Swiper>
-    <Button
-      containerStyle={{
-        top: 500,
-        left: 50,
-        position: 'absolute',
-        borderRadius: 4,
-      }}
-    >
-      { items.length !== 0 ? items[currentSwiperIndex].vote_average : null}
+    <Button bordered info style={styles.scoreButton}>
+      <Text>
+        { items.length !== 0 ? items[currentSwiperIndex].vote_average : null}
+      </Text>
     </Button>
   </View>
 );
