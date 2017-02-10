@@ -1,3 +1,3 @@
 export const HOME = 'home';
-export const DETAIL = 'detail';
+export const DETAILS = 'details';
 export const BLANK_PAGE = 'blackPage';

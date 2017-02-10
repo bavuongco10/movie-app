@@ -10,6 +10,12 @@ import {
   swiperScrollEnd,
   currentItemId
 } from './imageSwiper';
+
+import {
+  item,
+  itemIsLoading
+} from './details';
+
 export default combineReducers({
   drawer,
   cardNavigation,
@@ -18,5 +24,7 @@ export default combineReducers({
   itemsIsLoading,
   currentSwiperIndex,
   swiperScrollEnd,
-  currentItemId
+  currentItemId,
+  item,
+  itemIsLoading,
 });

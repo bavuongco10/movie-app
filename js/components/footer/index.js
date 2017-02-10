@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import navigateTo from '../../actions/sideBarNav';
 import { setCurrentItemId } from '../../actions/imageSwiper';
 import {
-  DETAIL,
+  DETAILS,
 } from '../../constants/route';
 const getCurrentItem = (currentSwiperIndex, items) => items[currentSwiperIndex];
 
@@ -22,7 +22,7 @@ const MyFooter = ({currentSwiperIndex, items, navigateTo, setCurrentItemId}) => 
       containerStyle={{flex: 0.2, height: 50, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center'}}
       style={{fontSize: 15, color: 'white', }}
       onPress = {() => {
-        navigateTo(DETAIL)
+        navigateTo(DETAILS)
         setCurrentItemId(getAttribute(currentSwiperIndex, items, 'id'))
       }}
     >

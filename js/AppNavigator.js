@@ -9,13 +9,13 @@ import { closeDrawer } from './actions/drawer';
 
 import Home from './components/home/';
 import BlankPage from './components/blankPage';
-import Detail from './components/detail';
+import Details from './components/details';
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
 import {
   HOME,
   BLANK_PAGE,
-  DETAIL,
+  DETAILS,
 } from './constants/route';
 const {
   popRoute,
@@ -69,8 +69,8 @@ class AppNavigator extends Component {
         return <Home />;
       case BLANK_PAGE:
         return <BlankPage />;
-      case DETAIL:
-        return <Detail />
+      case DETAILS:
+        return <Details />
       default :
         return <Home />;
     }

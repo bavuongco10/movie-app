@@ -9,6 +9,8 @@ import {
   ON_SWIPER_SCROLL_END_SUCCESS,
   SET_CURRENT_ITEM_ID_SUCCESS,
 } from '../constants/actionType';
+import Config from 'react-native-config';
+import path from 'path';
 
 export function itemsHasErrored(hasErrored): Action {
   return {
@@ -42,14 +44,14 @@ export function errorAfterFiveSeconds() {
 }
 
 export function fetchNowPlaying() {
-  const uri = 'https://api.themoviedb.org/3/movie/now_playing?api_key=903aec734823b64427c405dec09fe3ee';
+  const uri = path.join(Config.TMDB_URL, 'movie', `/now_playing?api_key=${Config.TMDB_API_KEY}`);
   return async (dispatch) => {
     try {
       dispatch(itemsIsLoading(true));
       const res = await axios.get(uri);
       if (!res.data) throw new Error();
       const items = res.data.results;
-      const slicedItems = _.slice(items,3, 6);
+      const slicedItems = _.slice(items, 0, 3);
       dispatch(fetchNowPlayingSuccess(slicedItems));
     } catch (err) {
       dispatch(itemsHasErrored(true));
