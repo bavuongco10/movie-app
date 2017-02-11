@@ -16,7 +16,8 @@ const getAttribute = (currentSwiperIndex, items, key) => {
 
 const MyFooter = ({currentSwiperIndex, items, navigateTo, setCurrentItemId}) => (
   <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-    <Text style={{ flex: 0.8}}>{getAttribute(currentSwiperIndex, items, 'original_title')}
+    <Text style={{ flex: 0.8, fontSize: 17, fontWeight: '400', marginLeft: 20}}>
+      {getAttribute(currentSwiperIndex, items, 'original_title')}
     </Text>
     <Button
       containerStyle={{flex: 0.2, height: 50, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center'}}

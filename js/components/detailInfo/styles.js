@@ -21,4 +21,15 @@ export default StyleSheet.create({
     fontSize: 20,
   },
 
+  textBlock: {
+    marginTop: 10,
+    marginLeft: 20,
+    marginRight: 20
+  },
+
+  regularText: {
+    fontSize: 14,
+    fontWeight: '300'
+  },
+
 });

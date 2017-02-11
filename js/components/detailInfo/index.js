@@ -9,10 +9,14 @@ import {
   Header,
   Content,
   Footer,
+  Col,
+  Row,
+  Grid,
 } from 'native-base';
 import FontAwsomeIcon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 import _ from 'lodash';
+import Currency from 'currency-formatter';
 
 const sanitizeReleaseDate = (date) => {
  const parts = _.split(date, '-');
@@ -28,6 +32,14 @@ const InfoIcon = ({item, label, value, icon, style}) => (
       <Text style={{fontSize: 10}}>{label}</Text>
       <Text style={{fontSize: 20, fontWeight: '300'}}>{value}</Text>
     </View>
+  </View>
+);
+
+const InfoHeader = ({label}) => (
+  <View style={{backgroundColor: '#FE0654', flex: 1}}>
+    <Text style={{marginLeft: 15, fontSize: 16, fontWeight: '500', paddingTop: 5, paddingBottom: 5, color: 'white'}}>
+      {label}
+    </Text>
   </View>
 );
 
@@ -62,18 +74,70 @@ export default ({item}) => (
         </View>
 
         <View style={{marginTop: 20}}>
-          <View style={{backgroundColor: '#FE0654', flex: 1}}>
-            <Text style={{marginLeft: 15, fontSize: 16, fontWeight: '500', paddingTop: 5, paddingBottom: 5, color: 'white'}}>
-              Overview
-            </Text>
-          </View>
-          <View style={{marginTop: 10, marginLeft: 20, marginRight: 20}}>
-            <Text style={{fontSize: 14, fontWeight: '300'}}>
+          <InfoHeader label={'Storyline'}/>
+          <View style={styles.textBlock}>
+            <Text style={styles.regularText}>
               {item.overview}
             </Text>
           </View>
         </View>
 
+        <View style={{marginTop: 20}}>
+          <InfoHeader label={'Details'}/>
+          <View style={styles.textBlock}>
+            <Grid>
+
+              <Col size={2}>
+                <Row>
+                  <Text style={styles.regularText}>Home page</Text>
+                </Row>
+                <Row>
+                  <Text style={styles.regularText}>Language</Text>
+                </Row>
+                <Row>
+                  <Text style={styles.regularText}>Countries</Text>
+                </Row>
+                <Row>
+                  <Text style={styles.regularText}>Budget</Text>
+                </Row>
+                <Row>
+                  <Text style={styles.regularText}>Production Co</Text>
+                </Row>
+              </Col>
+
+              <Col size={5}>
+                <Row>
+                  <Text style={styles.regularText}>{item.homepage}</Text>
+                </Row>
+                <Row>
+                  <Text style={styles.regularText}>{item.original_language}</Text>
+                </Row>
+                <Row>
+                  <View style={{flexDirection: 'row'}}>
+                    {
+                      item.production_countries.map(obj =>
+                        <Text key={obj.iso_3166_1} style={styles.regularText}>{obj.name}</Text>
+                      )
+                    }
+                  </View>
+                </Row>
+                <Row>
+                  <Text style={styles.regularText}>{Currency.format(item.budget, { code: 'USD' })}</Text>
+                </Row>
+                <Row>
+                  <View>
+                    {
+                      item.production_companies.map(obj =>
+                        <Text key={obj.id} style={styles.regularText}>{obj.name}</Text>
+                      )
+                    }
+                  </View>
+                </Row>
+              </Col>
+
+            </Grid>
+          </View>
+        </View>
       </View>
     </Content>
   </Container>
