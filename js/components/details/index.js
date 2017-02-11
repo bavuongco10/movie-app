@@ -23,7 +23,8 @@ import {
 
 import styles from './styles';
 import DetailsBackDropSwiper from '../detailsBackdropSwiper';
-import MiniPoster from '../detailsMiniPoster';
+import DetailsMiniPoster from '../detailsMiniPoster';
+import DetailsTabs from '../detailsTabs';
 import compose from 'recompose/compose';
 import lifecyle from 'recompose/lifecycle';
 import {
@@ -48,11 +49,15 @@ const Details = ({popRoute, navigation, openDrawer, currentItemId, item, itemIsL
           </Button>
         </Header>
         <Content>
-            <DetailsBackDropSwiper
-              item={item}
-            />
-            <MiniPoster
+          <DetailsBackDropSwiper
+            item={item}
+          />
+          <DetailsMiniPoster
+            item={item}/>
+          <View style={styles.contentContainer}>
+            <DetailsTabs
               item={item}/>
+          </View>
         </Content>
     </Container>
 );

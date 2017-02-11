@@ -1,13 +1,12 @@
 import React from 'react';
 import { Tabs } from 'native-base';
 
-import TabOne from '../tabs/tabOne';
+import ImageSwiper from '../imageSwiper';
 import TabTwo from '../tabs/tabTwo';
 
-// tabs base on react-native-scrollable-tab-view
 export default () => (
   <Tabs>
-    <TabOne tabLabel="Features"/>
-    <TabTwo tabLabel="About"/>
+    <ImageSwiper tabLabel="Now Playing"/>
+    <TabTwo tabLabel="Coming Soon"/>
   </Tabs>
 );
