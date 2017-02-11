@@ -9,35 +9,38 @@ import LinearGradient from 'react-native-linear-gradient';
 import {
   getImageUri,
 } from '../../helpers/function';
-const loading = require('../imageSwiper/img/loading3.gif');
-import styles from '../imageSwiper/styles';
+const loading = require('../../../images/loading3.gif');
+import styles from './styles';
 
 const Slide = ({uri, i}) => (
   <View style={styles.slide}>
-    <Image style={styles.image} source={{uri: uri}} />
+    <Image style={styles.imageBackDrop} source={{uri: uri}} />
     {
       !true
       && <View style={styles.loadingView}>
-        <Image style={styles.loadingImage} source={loading} />
-      </View>
+          <Image style={styles.loadingImage} source={loading} />
+          <LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']} style={styles.linearGradient} />
+        </View>
     }
   </View>
 );
 
-
 const DetailsBackdropSwiper = ({item}) => (
   <View>
     <Swiper
+      autoplay
       loadMinimal
+      autoplayTimeout={4}
       loadMinimalSize={1}
       style={styles.wrapper}
       showsPagination={false}
-      loop={false}
-      height={100}
+      loop
+      height={248}
+      index={5}
     >{
       item.images.backdrops.map((obj, i) =>
         <Slide
-          uri={getImageUri(obj.file_path)}
+          uri={getImageUri(obj.file_path, 'w780')}
           i={i}
           key={i}
         />

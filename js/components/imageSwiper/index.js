@@ -5,22 +5,26 @@ import {
   Image,
 } from 'react-native'
 import Swiper from 'react-native-swiper'
-const loading = require('./img/loading3.gif');
+const loading = require('./../../../images/loading3.gif');
 import styles from './styles';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import lifecycle from 'recompose/lifecycle';
-import { fetchNowPlaying, onSwiperScrollEnd } from '../../actions/imageSwiper';
+import {
+  fetchNowPlaying,
+  onSwiperScrollEnd,
+  itemsIsLoading,
+} from '../../actions/imageSwiper';
 import { Button } from 'native-base';
 import {
   getImageUri,
 } from '../../helpers/function';
 
-const Slide = ({uri, i}) => (
+const Slide = ({uri, i, isLoading}) => (
   <View style={styles.slide}>
     <Image style={styles.image} source={{uri: uri}} />
     {
-      !true
+      isLoading
       && <View style={styles.loadingView}>
         <Image style={styles.loadingImage} source={loading} />
       </View>
@@ -28,7 +32,7 @@ const Slide = ({uri, i}) => (
   </View>
 );
 
-const ImageSwiper = ({onSwiperScrollEnd, items, currentSwiperIndex}) => (
+const ImageSwiper = ({onSwiperScrollEnd, items, currentSwiperIndex, isLoading}) => (
   <View>
     <Swiper
       loadMinimal
@@ -41,9 +45,10 @@ const ImageSwiper = ({onSwiperScrollEnd, items, currentSwiperIndex}) => (
     >{
         items.map((item, i) =>
           <Slide
-            uri={getImageUri(item.poster_path)}
+            uri={getImageUri(item.poster_path, 'w780')}
             i={i}
             key={i}
+            isLoading={isLoading}
           />
         )
       }
@@ -67,6 +72,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchNowPlaying: url => dispatch(fetchNowPlaying()),
   onSwiperScrollEnd: (e, state, context) => dispatch(onSwiperScrollEnd(state)),
+  setLoadingStatus: isLoading => dispatch(itemsIsLoading(isLoading)),
 });
 
 export default compose(
@@ -74,7 +80,11 @@ export default compose(
   lifecycle({
     componentDidMount() {
       this.props.fetchNowPlaying();
-    }
+    },
+
+    componentWillReceiveProps(nextProps) {
+      if(nextProps.items) this.props.setLoadingStatus(false);
+    },
   })
 )(ImageSwiper);
 

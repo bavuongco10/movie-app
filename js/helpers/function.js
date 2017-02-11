@@ -1,4 +1,5 @@
 import Config from 'react-native-config';
 import path from 'path';
 
-export const getImageUri = (pathname) => path.join(Config.TMDB_IMG_URL,'w780', pathname);
+// width will be w780 or w185
+export const getImageUri = (pathname, width) => path.join(Config.TMDB_IMG_URL, width, pathname);
