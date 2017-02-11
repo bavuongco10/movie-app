@@ -5,7 +5,6 @@ import {
   Image,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-import LinearGradient from 'react-native-linear-gradient';
 import {
   getImageUri,
 } from '../../helpers/function';
@@ -19,7 +18,6 @@ const Slide = ({uri, i}) => (
       !true
       && <View style={styles.loadingView}>
           <Image style={styles.loadingImage} source={loading} />
-          <LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']} style={styles.linearGradient} />
         </View>
     }
   </View>

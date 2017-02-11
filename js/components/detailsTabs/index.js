@@ -9,7 +9,7 @@ import myTheme from '../../themes/base-theme';
 
 export default ({item}) => (
   <Tabs theme={myTheme}>
-    <Info tabLabel="Info"/>
+    <Info tabLabel="Info" item={item}/>
     <Trailers tabLabel="Trailers"/>
     <Reviews tabLabel="Reviews"/>
   </Tabs>

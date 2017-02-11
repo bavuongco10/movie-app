@@ -51,7 +51,7 @@ export function fetchNowPlaying() {
       const res = await axios.get(uri);
       if (!res.data) throw new Error();
       const items = res.data.results;
-      const slicedItems = _.slice(items, 0, 3);
+      const slicedItems = _.slice(items, 1, 4);
       dispatch(fetchNowPlayingSuccess(slicedItems));
     } catch (err) {
       dispatch(itemsHasErrored(true));
