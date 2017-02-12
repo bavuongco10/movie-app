@@ -19,9 +19,9 @@ const Home = () => (
       {/*</Button>*/}
       {/*<Title>{(this.props.name) ? this.props.name : 'Home'}</Title>*/}
     {/*</Header>*/}
-    <Content>
+    <View>
       <Tabs />
-    </Content>
+    </View>
 
     <Footer>
       <MyFooter/>

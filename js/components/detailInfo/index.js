@@ -2,7 +2,8 @@ import React from 'react';
 
 import {
   View,
-  Text
+  Text,
+  ScrollView,
 } from 'react-native';
 import {
   Container,
@@ -17,6 +18,7 @@ import FontAwsomeIcon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 import _ from 'lodash';
 import Currency from 'currency-formatter';
+import Casts from '../casts';
 
 const sanitizeReleaseDate = (date) => {
  const parts = _.split(date, '-');
@@ -101,6 +103,9 @@ export default ({item}) => (
                   <Text style={styles.regularText}>Budget</Text>
                 </Row>
                 <Row>
+                  <Text style={styles.regularText}>Directed By</Text>
+                </Row>
+                <Row>
                   <Text style={styles.regularText}>Production Co</Text>
                 </Row>
               </Col>
@@ -125,18 +130,25 @@ export default ({item}) => (
                   <Text style={styles.regularText}>{Currency.format(item.budget, { code: 'USD' })}</Text>
                 </Row>
                 <Row>
-                  <View>
+                  <Text style={styles.regularText}>{item.casts.crew.filter(obj => obj.job === 'Director')[0].name}</Text>
+                </Row>
+                <Row>
+                  <ScrollView style={{paddingTop: 2}}>
                     {
                       item.production_companies.map(obj =>
                         <Text key={obj.id} style={styles.regularText}>{obj.name}</Text>
                       )
                     }
-                  </View>
+                  </ScrollView>
                 </Row>
               </Col>
 
             </Grid>
           </View>
+        </View>
+
+        <View style={{marginTop: 20}}>
+          <InfoHeader label={'Casts'}/>
         </View>
       </View>
     </Content>

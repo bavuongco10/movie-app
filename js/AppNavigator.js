@@ -106,6 +106,7 @@ class AppNavigator extends Component {
         negotiatePan
       >
         <StatusBar
+          hidden = {true}
           backgroundColor={statusBarColor}
           barStyle="default"
         />
