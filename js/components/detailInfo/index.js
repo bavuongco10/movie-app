@@ -16,9 +16,9 @@ import {
 } from 'native-base';
 import FontAwsomeIcon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
-import _ from 'lodash';
 import Currency from 'currency-formatter';
 import Casts from '../casts';
+import _ from 'lodash';
 
 const sanitizeReleaseDate = (date) => {
  const parts = _.split(date, '-');
@@ -149,6 +149,7 @@ export default ({item}) => (
 
         <View style={{marginTop: 20}}>
           <InfoHeader label={'Casts'}/>
+          <Casts cast={_.slice(item.casts.cast, 0, 5)}/>
         </View>
       </View>
     </Content>
