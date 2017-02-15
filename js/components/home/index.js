@@ -13,12 +13,6 @@ import MyFooter from '../footer';
 
 const Home = () => (
   <Container theme={myTheme} style={styles.container}>
-    {/*<Header>*/}
-      {/*<Button transparent onPress={this.props.openDrawer}>*/}
-        {/*<Icon name="ios-menu"/>*/}
-      {/*</Button>*/}
-      {/*<Title>{(this.props.name) ? this.props.name : 'Home'}</Title>*/}
-    {/*</Header>*/}
     <View>
       <Tabs />
     </View>
