@@ -16,7 +16,7 @@
     "moment": "^2.13.0",
     "native-base": "0.5.11",
     "path": "^0.12.7",
-    "react": "15.3.2",
+    "react": "16.5.0",
     "react-native": "0.35.0",
     "react-native-button": "^1.7.1",
     "react-native-code-push": "1.15.0-beta",
