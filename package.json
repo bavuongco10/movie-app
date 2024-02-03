@@ -34,7 +34,7 @@
     "redux-persist": "^3.2.2",
     "redux-thunk": "^2.1.0",
     "remote-redux-devtools": "^0.3.3",
-    "remote-redux-devtools-on-debugger": "^0.4.6",
+    "remote-redux-devtools-on-debugger": "^0.8.3",
     "url": "^0.11.0"
   },
   "devDependencies": {
@@ -53,7 +53,7 @@
     "mocha": "^2.5.3",
     "react-test-renderer": "15.3.2",
     "remote-redux-devtools": "^0.3.4",
-    "remote-redux-devtools-on-debugger": "^0.4.6",
+    "remote-redux-devtools-on-debugger": "^0.8.3",
     "remotedev-server": "^0.1.2"
   },
   "keywords": [
